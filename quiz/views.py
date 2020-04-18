@@ -24,4 +24,7 @@ class Message(APIView):
 	def get(self,request):
 		return Response(data = "This is a class based view ", status = status.HTTP_200_OK)
 
+	def post(self,request):
+		return Response(data = {"Detail" : "This is hit by post", "Data" : request.data},status=status.HTTP_200_OK)
+
     
