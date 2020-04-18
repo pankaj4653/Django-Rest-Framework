@@ -5,7 +5,12 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def index(request):
-	message = "This is test url"
-	return Response(data = message, status =status.HTTP_200_OK)
+	if request.method == "POST":
+	    return Response(data = {"message":"Got Some Data!","Data": request.data} ,status =status.HTTP_200_OK)
+	elif(request.method == "GET"):
+		return Response(data = {"message" : "This is by Get method"},status = status.HTTP_200_OK)
+	else:
+		return Response({"message" : "This is Not the Right Method" })
+
