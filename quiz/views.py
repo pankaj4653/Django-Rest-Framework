@@ -7,6 +7,8 @@ from rest_framework import status
 
 @api_view(['GET','POST'])
 def index(request):
+	print(request.user)
+	print(request.auth)
 	if request.method == "POST":
 	    return Response(data = {"message":"Got Some Data!","Data": request.data} ,status =status.HTTP_200_OK)
 	elif(request.method == "GET"):
